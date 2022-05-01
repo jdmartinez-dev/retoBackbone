@@ -55,11 +55,11 @@ class ImportZipcodeCommand extends Command
                 $municipality_id = (Int) $dataline[11]; # c_mnpio
                 $settlement_type_id = (Int) $dataline[10]; # c_tipo_asenta
                 // Names
-                $stateName = mb_strtoupper($dataline[4], 'utf-8'); # d_estado
-                $cityName = mb_strtoupper($dataline[5], 'utf-8'); # d_asenta
-                $municipalityName = mb_strtoupper($dataline[3], 'utf-8');
-                $settlementName = mb_strtoupper($dataline[1], 'utf-8');
-                $zoneType = mb_strtoupper($dataline[13], 'utf-8'); # d_zona
+                $stateName = $this->uppercase($dataline[4]); # d_estado
+                $cityName = $this->uppercase($dataline[5]); # d_asenta
+                $municipalityName = $this->uppercase($dataline[3]);
+                $settlementName = $this->uppercase($dataline[1]);
+                $zoneType = $this->uppercase($dataline[13]); # d_zona
 
                 // Data structure for import to database - Settlement Types
                 $settlement_types[$settlement_type_id] = $dataline[2]; # d_tipo_asenta  
@@ -125,5 +125,11 @@ class ImportZipcodeCommand extends Command
         
         $this->info('End command - import Zipcodes');
         return true;
+    }
+
+    protected function uppercase($text = "")
+    {   
+        $text = preg_replace('/[^a-z\s]/i', '', iconv("UTF-8", "US-ASCII//TRANSLIT", $text));
+        return strtoupper($text);
     }
 }
