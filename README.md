@@ -1,3 +1,34 @@
+## Acerca del proyecto
+
+En este apartado se encuentran los pasos a seguir para realizar la intalacion del proyecto:
+
+- Clonar repositorio:
+	- `git clone https://github.com/jdmartinez-dev/retoBackbone.git`
+- Creamos una base de datos para usar con el proyecto.
+- Ir a la raiz del proyecto: 
+	- `cd retoBackbone`
+- Instalamos toda la paquetería necesaria para nuestro proyecto mediante **composer**:
+	- `composer install`
+- Duplicamos **.env.example** y lo dejamos **.env** `cp .env.example .env` y procedemos a editar **.env** para aplicar nuestras variables de entorno. Para este paso solo será necesario configurar:
+	- `APP_URL` en caso de ser necesario al aplicar un virtualHost o dominio público.
+	- Variables de conexión a la base de datos, como son la serie de `DB_*` (Host, Port, Database, Username, Password)
+- Luego ejecutamos este comando `php artisan key:generate` para generar la key del proyecto.
+- Aplicamos los permisos sobre la carpeta **storage**:
+	- `sudo chmod -R 775 storage && sudo chgrp -R www-data storage`
+- Aplicamos las migraciones de la base de datos:
+	- `php artisan migrate`
+- Con el siguiente comando podremos importar la información que necesitamos para utilizar la API. `php artisan import:zipcodes`
+
+Con estos pasos ya podremos hacer uso de nuestra API, ejemplo:
+- **Local Endpoint con VirtualHost**
+	- `http://locahost/api/zip-codes/{zip_code}`
+	- `http://retobackbone.local/api/zip-codes/{zip_code}`
+- **Public Endpoint**
+	- `https://retobackbone.jmartinezn.com/api/zip-codes/{zip_code}`
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
@@ -6,6 +37,8 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
+
+
 
 ## About Laravel
 

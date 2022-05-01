@@ -39,7 +39,7 @@ class ImportZipcodeCommand extends Command
      */
     public function handle()
     {   
-        $getfile = file(public_path(). "\import\import_data_zipcode.txt");
+        $getfile = file(public_path(). DIRECTORY_SEPARATOR ."import". DIRECTORY_SEPARATOR ."import_data_zipcode.txt");
         $getfile = array_chunk($getfile, 1000, true);
         $import_data = [];
         $settlement_types = [];
