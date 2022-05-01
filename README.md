@@ -1,3 +1,10 @@
+## Reto Backbone
+
+- Lo primero que hice fue analizar la información que se me entrego como referencia para ubicar cuáles eran las relaciones necesarias para construir el JSON esperado. De esta forma, pude determinar que información era necesaria a partir de los datos y que tablas y modelos era necesario crear.
+- Genere las tablas [States] [municipalities] [zipcodes] [settlements] [settlement_types] y a cada una su respectivo modelo.
+- Tome como base la tabla [zipcodes] porque de aquí obtengo las relaciones necesarias como (settlements, municipality) y (federal_entity) que la obtengo a partir de [municipalities] por su relación con [states].
+- De esta manera, cuando realizo una petición sobre el modelo de (zipcode) para buscar uno en específico, este modelo me trae todos los datos relacionados y necesarios que arman el json de manera automática.
+
 ## Acerca del proyecto
 
 En este apartado se encuentran los pasos a seguir para realizar la intalacion del proyecto:
